@@ -1,14 +1,9 @@
 class Solution {
     public int sumOfTheDigitsOfHarshadNumber(int x) {
         int sum = 0;
-        int res = x;
-        while(res > 0){
-            sum += res % 10;
-            res /= 10;
+        for (char ch : String.valueOf(x).toCharArray()) {
+            sum += ch - '0';
         }
-        if(x % sum ==0){
-            return sum;
-        }
-        return -1;
+        return (x % sum == 0) ? sum : -1;
     }
 }

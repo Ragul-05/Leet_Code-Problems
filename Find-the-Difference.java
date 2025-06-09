@@ -1,8 +1,15 @@
 class Solution {
     public char findTheDifference(String s, String t) {
-        char c = 0;
-        for(char cs : s.toCharArray()) c ^= cs;
-        for(char ct : t.toCharArray()) c ^= ct;
-        return c;
+        int result = 0;
+
+        for (char c : t.toCharArray()) {
+            result += c;
+        }
+
+        for (char c : s.toCharArray()) {
+            result -= c;
+        }
+
+        return (char) result;
     }
 }

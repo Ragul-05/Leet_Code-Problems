@@ -15,13 +15,13 @@ class Solution {
         dummy.next = head;
         ListNode prev = dummy;
         for (int i = 0; i < left - 1; i++) prev = prev.next;
-        ListNode start = prev.next;
-        ListNode then = start.next;
+        ListNode l = prev.next;
+        ListNode r = l.next;
         for (int i = 0; i < right - left; i++) {
-            start.next = then.next;
-            then.next = prev.next;
-            prev.next = then;
-            then = start.next;
+            l.next = r.next;
+            r.next = prev.next;
+            prev.next = r;
+            r = l.next;
         }
         return dummy.next;
     }

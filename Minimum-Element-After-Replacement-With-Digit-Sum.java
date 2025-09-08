@@ -1,25 +1,20 @@
 class Solution {
+    private int digitSum(int num) {
+        int sum = 0;
+        while (num > 0) {
+            sum += num % 10;
+            num /= 10;
+        }
+        return sum;
+    }
     public int minElement(int[] nums) {
-        int n = nums.length;
-        int j  = 0;
-        for(int i = 0 ; i < n ; i++){
-            int s = nums[i];
-            int sum = 0;
-            while(s > 0){
-                int digit = s % 10;
-                sum += digit;
-                s /= 10;
-            }
-            nums[j++] = sum;
-        }
-
-        int min = nums[0];
-        for(int i = 1 ; i < n ; i++){
-            if( nums[i] < min ){
-                min = nums[i];
+        int min = Integer.MAX_VALUE;
+        for (int num : nums) {
+            int sum = digitSum(num);
+            if (sum < min) {
+                min = sum;
             }
         }
-
         return min;
     }
 }
